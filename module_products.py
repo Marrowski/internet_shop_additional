@@ -25,6 +25,24 @@ class Product:
         elif update_tovar == 'Опис'.title().strip():
             tovar['Опис'] = input('Оновіть опис товару:').title().strip()
 
+    def delete_tovar(self):
+        print(f'Наявні товари: {tovar}')
+        delete_tovar = int(input('Введіть ID товару для видалення:'))
+        if delete_tovar == tovar['ID']:
+            tovar.clear()
+
+    def write_json(self):
+        with open('tovar.json', 'w', encoding='utf-8') as file:
+            json.dump(tovar, file, ensure_ascii=False, indent=4)
+
+    def read_json(self):
+        try:
+            with open('tovar.json', encoding='utf-8') as f:
+                tovar_load = json.load(f)
+                print(tovar_load)
+        except FileNotFoundError:
+            print('Файла з таким іменем не знайдено.')
+
 prod1 = Product()
 
 def main():
@@ -43,20 +61,14 @@ def main():
         oper = int(input('Виберіть операцію:'))
         if oper == 1:
             prod1.add_tovar()
-
         elif oper == 2:
-            print(f'Наявні товари: {tovar}')
-            delete_tovar = int(input('Введіть ID товару для видалення:'))
-            if delete_tovar == tovar['ID']:
-                tovar.clear()
+            prod1.delete_tovar()
         elif oper == 3:
             prod1.change_tovar()
         elif oper == 4:
-            with open('tovar.json', 'w', encoding='cp1251',) as file:
-                file.write(str(tovar))
+            prod1.write_json()
         elif oper == 5:
-            with open('tovar.json', 'r') as f:
-                json.load(f)
+           prod1.read_json()
         elif oper == 6:
             print(tovar)
         elif oper == 7:
