@@ -52,7 +52,7 @@ def main():
         elif oper == 3:
             prod1.change_tovar()
         elif oper == 4:
-            with open('tovar.json', 'w', encoding='cp1251') as file:
+            with open('tovar.json', 'w', encoding='cp1251',) as file:
                 file.write(str(tovar))
         elif oper == 5:
             with open('tovar.json', 'r') as f:
