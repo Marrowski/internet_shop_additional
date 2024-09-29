@@ -1,7 +1,6 @@
 import json
 
-from main import orders, client
-from module_products import tovar
+from main import orders, client, tovar
 
 class Order:
     def add_order(self):
@@ -56,7 +55,7 @@ order1 = Order()
 
 def main():
     while True:
-        print('Вітаю в застосунку')
+        print('Вітаю в застосунку!')
         print('------------------------')
         print('1 - Створити замовлення')
         print('2 - Редагувати замовлення')
@@ -64,6 +63,8 @@ def main():
         print('4 - Знайти замовлення за номером')
         print('5 - Зберегти файл')
         print('6 - Завантажити файл')
+        print('7 - Створені замовлення')
+        print('8 - Вихід з програми')
         print('------------------------')
         action = int(input('Оберіть дію:'))
         if action == 1:
@@ -79,7 +80,9 @@ def main():
         elif action == 6:
             order1.read_json()
         elif action == 7:
-            print('Допобачення!')
+            print(orders)
+        elif action == 8:
+            print('Побачимось наступний раз!')
             break
 
 
