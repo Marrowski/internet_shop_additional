@@ -1,12 +1,12 @@
 import json
-
-from main import orders, client, tovar
+from main import orders, tovar
+from module_clients import client1
 
 class Order:
     def add_order(self):
         orders['Номер'] = int(input('Введіть номер замовлення'))
         orders['Список товарів'] = tovar
-        orders['Клієнт'] = client
+        orders['Клієнт'] = client1.list_clinets()
         orders['Загальна сума'] = sum(tovar['Ціна'])
         orders['Статус'] = input('Введіть статус замовлення:').title().strip()
 
@@ -47,7 +47,8 @@ class Order:
         try:
             with open('orders.json', 'r') as f:
                 order_load = json.load(f)
-                print(order_load)
+                json.loads(order_load)
+                return order_load
         except FileNotFoundError:
             print('Файл з таким іменем не знайдено.')
 
@@ -80,7 +81,9 @@ def main():
         elif action == 6:
             order1.read_json()
         elif action == 7:
-            print(orders)
+            if orders is not None:
+                print(orders)
+                print(order1.read_json())
         elif action == 8:
             print('Побачимось наступний раз!')
             break

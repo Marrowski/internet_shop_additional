@@ -38,8 +38,10 @@ class Product:
     def read_json(self):
         try:
             with open('tovar.json', encoding='utf-8') as f:
-                tovar_load = json.load(f)
-                print(tovar_load)
+                tovar_load = f.read()
+                json.loads(tovar_load)
+                return tovar_load
+
         except FileNotFoundError:
             print('Файла з таким іменем не знайдено.')
 
@@ -70,7 +72,12 @@ def main():
         elif oper == 5:
            prod1.read_json()
         elif oper == 6:
-            print(tovar)
+            if tovar is not None:
+                print(tovar)
+                print(prod1.read_json())
+            else:
+                print('Наразі список товарів пустий.')
+                continue
         elif oper == 7:
             print('До зустрічі!')
             break
