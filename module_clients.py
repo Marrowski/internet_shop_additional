@@ -1,4 +1,4 @@
-from main import client
+from main import client, orders
 import json
 
 
@@ -10,7 +10,7 @@ class Client:
          client['Електронна пошта'] = input('Введіть ваш email:').strip()
          client['Телефон'] = int(input('Введіть номер телефону в форматі(380):').strip())
          client['Адреса'] = input('Введіть адресу:').title().strip()
-         client['Історія замовлень'] = ''
+         client['Історія замовлень'] = orders
 
     def edit_client(self):
         red_client = int(input('Введіть ключ клієнта, якого ви хотіли би відредагувати:'))

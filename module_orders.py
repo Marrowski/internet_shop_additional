@@ -84,6 +84,9 @@ def main():
             if orders is not None:
                 print(orders)
                 print(order1.read_json())
+            else:
+                print('Список замовлень наразі пустий')
+                continue
         elif action == 8:
             print('Побачимось наступний раз!')
             break
